@@ -37,7 +37,7 @@ end
 
 vim.api.nvim_create_user_command("CountFunctionLines", count_function_lines, {})
 
-vim.api.nvim_create_autocmd({"BufReadPost", "TextChanged"}, {
+vim.api.nvim_create_autocmd({"BufReadPost", "TextChanged", "InsertLeave"}, {
     pattern = "*.c",
     callback = function()
 		count_function_lines()
