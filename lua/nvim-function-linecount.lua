@@ -7,12 +7,9 @@ local function count_function_lines()
 	local i = 1
 
 	vim.api.nvim_buf_clear_namespace(buffer, namespace, 0, -1)
-    while (i <= last_line) do
+    while (i < last_line) do
         if string.match(lines[i], "^[%w%s_%*]+%s+[%w_%*]+%s*%b()") then
 			i = i + 1
-			if (i > last_line) then
-				return
-			end
 			if (string.match(lines[i], "{")) then
 				local func_lines = 0
 				local open_brackets = 1
