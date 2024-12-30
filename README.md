@@ -1,3 +1,5 @@
+![screenshot](screenshot.png "Screenshot")
+
 ## Install with Lazy:
 in ~/.config/nvim/init.lua add
 ```
