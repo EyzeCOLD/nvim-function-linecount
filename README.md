@@ -10,4 +10,3 @@ and in your ~.config/nvim/lua/plugins/ folder add
   "EyzeCOLD/nvim-function-linecount"
 }
 ```
-![alt text](https://imgur.com/a/VUhFb0f)
