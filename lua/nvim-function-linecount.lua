@@ -3,7 +3,7 @@ local function count_function_lines()
 	local last_line = vim.api.nvim_buf_line_count(buffer)
     local lines = vim.api.nvim_buf_get_lines(buffer, 0, -1, false)
 	local namespace = vim.api.nvim_create_namespace("error_namespace")
-	local hl_group = "ErrorMsg"
+	local hl_group
 	local i = 1
 
 	vim.api.nvim_buf_clear_namespace(buffer, namespace, 0, -1)
@@ -25,8 +25,16 @@ local function count_function_lines()
 						open_brackets = open_brackets - 1
 					end
 				end
+				func_lines = func_lines - 1;
+				if (func_lines < 25) then
+					hl_group = "Nontext"
+				elseif (func_lines == 25) then
+					hl_group = "WarningMsg"
+				else
+					hl_group = "ErrorMsg"
+				end
 				vim.api.nvim_buf_set_extmark(buffer, namespace, i - 1, 0, {
-					virt_text = { { string.format("-- Lines: %d", func_lines - 1), hl_group } },
+					virt_text = { { string.format("-- Lines: %d", func_lines), hl_group } },
 					virt_text_pos = "eol",
 				})
 			end
