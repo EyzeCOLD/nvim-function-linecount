@@ -3,8 +3,8 @@ This plugin counts how many lines every function in your .c file has by tracking
 ![screenshot](screenshot.png "Screenshot")
 
 NOTE: as of now the following style is expected:
-* identifier and arguments of the function on one line
-* curly braces always on their own lines and the type
+* function return type, identifier and arguments on one line
+* curly braces always on their own lines
 ```
 void func(int param)
 {
