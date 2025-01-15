@@ -5,7 +5,7 @@ This plugin counts how many lines every function in your .c file has by tracking
 NOTE: as of now the following style is expected:
 * function return type, identifier and arguments on one line
 * curly braces always on their own lines
-```
+```C
 void func(int param)
 {
     if (!condition)
