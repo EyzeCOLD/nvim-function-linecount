@@ -1,4 +1,4 @@
-This plugin counts how many lines each function in .c file has in between its outermost curly brackets. Made for 42students using NeoVim.
+This plugin counts how many lines each function has in between its outermost curly brackets. Only inspects functions in .c, .h, .cpp and .hpp files (C++ support at experimental level). Made for 42students using NeoVim.
 
 ![screenshot](screenshot.png "Screenshot")
 
