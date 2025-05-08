@@ -1,4 +1,16 @@
-local function count_function_lines()
+local M = {}
+
+-- Default value
+M.line_limit = 25
+
+function M.setup(opts)
+	opts = opts or {}
+	if type(opts.line_limit) == "number" then
+		M.line_limit = opts.line_limit
+	end
+end
+
+function M.count_function_lines()
 	local buffer = vim.api.nvim_get_current_buf()
 	local last_line = vim.api.nvim_buf_line_count(buffer)
     local lines = vim.api.nvim_buf_get_lines(buffer, 0, -1, false)
@@ -26,9 +38,9 @@ local function count_function_lines()
 					end
 				end
 				func_lines = func_lines - 1;
-				if (func_lines < 25) then
+				if (func_lines < M.line_limit) then
 					hl_group = "Nontext"
-				elseif (func_lines == 25) then
+				elseif (func_lines == M.line_limit) then
 					hl_group = "WarningMsg"
 				else
 					hl_group = "ErrorMsg"
@@ -43,11 +55,13 @@ local function count_function_lines()
 	end
 end
 
-vim.api.nvim_create_user_command("CountFunctionLines", count_function_lines, {})
+vim.api.nvim_create_user_command("CountFunctionLines", M.count_function_lines, {})
 
 vim.api.nvim_create_autocmd({"BufReadPost", "TextChanged", "InsertLeave"}, {
     pattern = "*.c",
     callback = function()
-		count_function_lines()
+		M.count_function_lines()
 	end,
 })
+
+return M
