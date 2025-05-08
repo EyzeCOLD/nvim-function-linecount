@@ -60,7 +60,7 @@ end
 vim.api.nvim_create_user_command("CountFunctionLines", M.count_function_lines, {})
 
 vim.api.nvim_create_autocmd({"BufReadPost", "TextChanged", "InsertLeave"}, {
-    pattern = "*.c",
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp" },
     callback = function()
 		M.count_function_lines()
 	end,
