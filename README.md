@@ -1,16 +1,24 @@
-This plugin counts how many lines every function in your .c file has by tracking lines with `{` and `}`. 
+This plugin counts how many lines each function in .c file has in between its outermost curly brackets. Made for 42students using NeoVim.
 
 ![screenshot](screenshot.png "Screenshot")
 
-NOTE: as of now the following style is expected:
-* function return type, identifier and arguments on one line
-* curly braces always on their own lines
+Recognizes the following styles. Don't expect the count to make sense with other ways of formatting.
 ```C
-void func(int param)
+// Allman
+type id(param)
 {
     if (!condition)
     {
-        function_body();
+        function_call();
+        return (1);
+    }
+    return (0);
+}
+
+// K&R
+type id(param) {
+    if (!condition) {
+        function_call();
         return (1);
     }
     return (0);
