@@ -19,12 +19,14 @@ void func(int param)
 
 ## Install with Lazy:
 in ~/.config/nvim/init.lua add
-```
-require("nvim-function-linecount")
+```lua
+require("nvim-function-linecount").setup()
+-- Or override the default 25 line limit with
+require("nvim-function-linecount").setup({ line_limit = 60 })
 ```
 
-and in your ~.config/nvim/lua/plugins/ folder add
-```
+And in your ~.config/nvim/lua/plugins/ folder add
+```lua
 {
   "EyzeCOLD/nvim-function-linecount"
 }
